@@ -11,10 +11,10 @@
 		E7A6296F1A5D545A00BEE34D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A6296E1A5D545A00BEE34D /* AppDelegate.m */; };
 		E7A629721A5D545A00BEE34D /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A629711A5D545A00BEE34D /* FirstViewController.m */; };
 		E7A629751A5D545B00BEE34D /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A629741A5D545B00BEE34D /* SecondViewController.m */; };
-		E7A629781A5D545B00BEE34D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A629761A5D545B00BEE34D /* Main.storyboard */; };
 		E7A6297A1A5D545B00BEE34D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A629791A5D545B00BEE34D /* Images.xcassets */; };
 		E7A6297D1A5D545B00BEE34D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7A6297B1A5D545B00BEE34D /* LaunchScreen.xib */; };
 		E7A629891A5D545B00BEE34D /* CIFilterListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A629881A5D545B00BEE34D /* CIFilterListTests.m */; };
+		E7A629941A5D590C00BEE34D /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A629931A5D590C00BEE34D /* ListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,12 +37,13 @@
 		E7A629711A5D545A00BEE34D /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		E7A629731A5D545A00BEE34D /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		E7A629741A5D545B00BEE34D /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		E7A629771A5D545B00BEE34D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7A629791A5D545B00BEE34D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E7A6297C1A5D545B00BEE34D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E7A629821A5D545B00BEE34D /* CIFilterListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CIFilterListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A629871A5D545B00BEE34D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7A629881A5D545B00BEE34D /* CIFilterListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFilterListTests.m; sourceTree = "<group>"; };
+		E7A629921A5D590C00BEE34D /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		E7A629931A5D590C00BEE34D /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,11 +87,12 @@
 			children = (
 				E7A6296D1A5D545A00BEE34D /* AppDelegate.h */,
 				E7A6296E1A5D545A00BEE34D /* AppDelegate.m */,
+				E7A629921A5D590C00BEE34D /* ListViewController.h */,
+				E7A629931A5D590C00BEE34D /* ListViewController.m */,
 				E7A629701A5D545A00BEE34D /* FirstViewController.h */,
 				E7A629711A5D545A00BEE34D /* FirstViewController.m */,
 				E7A629731A5D545A00BEE34D /* SecondViewController.h */,
 				E7A629741A5D545B00BEE34D /* SecondViewController.m */,
-				E7A629761A5D545B00BEE34D /* Main.storyboard */,
 				E7A629791A5D545B00BEE34D /* Images.xcassets */,
 				E7A6297B1A5D545B00BEE34D /* LaunchScreen.xib */,
 				E7A629691A5D545A00BEE34D /* Supporting Files */,
@@ -173,6 +175,7 @@
 				TargetAttributes = {
 					E7A629651A5D545A00BEE34D = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = ZA562ZPM4Z;
 					};
 					E7A629811A5D545B00BEE34D = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -204,7 +207,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7A629781A5D545B00BEE34D /* Main.storyboard in Resources */,
 				E7A6297D1A5D545B00BEE34D /* LaunchScreen.xib in Resources */,
 				E7A6297A1A5D545B00BEE34D /* Images.xcassets in Resources */,
 			);
@@ -224,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7A629941A5D590C00BEE34D /* ListViewController.m in Sources */,
 				E7A629751A5D545B00BEE34D /* SecondViewController.m in Sources */,
 				E7A6296F1A5D545A00BEE34D /* AppDelegate.m in Sources */,
 				E7A629721A5D545A00BEE34D /* FirstViewController.m in Sources */,
@@ -250,14 +253,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E7A629761A5D545B00BEE34D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E7A629771A5D545B00BEE34D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E7A6297B1A5D545B00BEE34D /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -351,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CIFilterList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -361,6 +357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CIFilterList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
