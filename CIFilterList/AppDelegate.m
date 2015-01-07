@@ -15,8 +15,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
         self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-
+        [self.window makeKeyAndVisible];
+        
         UITabBarController *tabBarController = [[UITabBarController alloc] init];
+        tabBarController.viewControllers = @[ [[UINavigationController alloc] initWithRootViewController:
+                                               [ListViewController.alloc initWithCategoryType:CILCategoryTypeByEffect]],
+                                              [[UINavigationController alloc] initWithRootViewController:
+                                               [ListViewController.alloc initWithCategoryType:CILCategoryTypeByUsage]],
+                                              [[UINavigationController alloc] initWithRootViewController:
+                                               [ListViewController.alloc initWithCategoryType:CILCategoryTypeBuiltIn]]
+                                              ];
+        self.window.rootViewController = tabBarController;
         
         return YES;
 }

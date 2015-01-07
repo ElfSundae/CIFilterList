@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  FiltersListViewController.h
 //  CIFilterList
 //
 //  Created by Elf Sundae on 1/7/15.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface FiltersListViewController : UITableViewController
 
+- (instancetype)initWithFilterCategory:(NSString *)category;
 
 @end
-
