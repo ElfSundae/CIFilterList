@@ -47,7 +47,9 @@
 				E7A629681A5D545A00BEE34D /* CIFilterList */,
 				E7A629671A5D545A00BEE34D /* Products */,
 			);
+			indentWidth = 8;
 			sourceTree = "<group>";
+			tabWidth = 8;
 		};
 		E7A629671A5D545A00BEE34D /* Products */ = {
 			isa = PBXGroup;
