@@ -74,7 +74,8 @@
                 cell.textLabel.text = filter.name;
                 cell.detailTextLabel.text = filter.attributes[kCIAttributeFilterDisplayName];
         } else {
-                NSLog(@"wrong filter? %@, %@", NSStringFromClass(filter.class), filter);
+                //NSLog(@"wrong filter? %@, %@", NSStringFromClass(filter.class), filter);
+                cell.textLabel.text = filter.description;
         }
         
         return cell;
@@ -84,7 +85,9 @@
 {
         CIFilter *filter = self.list[indexPath.row];
         FilterDetailViewController *detailController = [[FilterDetailViewController alloc] initWithFilter:filter];
-        [self.navigationController pushViewController:detailController animated:YES];
+        if (detailController) {
+                [self.navigationController pushViewController:detailController animated:YES];
+        }
 }
 
 

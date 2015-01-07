@@ -23,7 +23,9 @@
 - (instancetype)initWithFilter:(CIFilter *)filter
 {
         NSParameterAssert([filter isKindOfClass:[CIFilter class]]);
-
+        if (![filter isKindOfClass:[CIFilter class]]) {
+                return nil;
+        }
         self = [super init];
         self.filter = filter;
         self.title = filter.name;
