@@ -10,9 +10,11 @@
 @import CoreImage;
 #import "FilterDetailViewController.h"
 
-@interface FiltersListViewController ()
+@interface FiltersListViewController () <UISearchBarDelegate>
 @property (nonatomic, strong) NSArray *list;
 @property (nonatomic, copy) NSString *categoryName;
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) NSMutableArray *searchFilteredList;
 @end
 
 @implementation FiltersListViewController
@@ -23,6 +25,7 @@
         self.title = category;
         self.categoryName = category;
         self.list = [CIFilter filterNamesInCategory:category];
+        self.searchFilteredList = [NSMutableArray arrayWithCapacity:self.list.count];
         return self;
 }
 
@@ -51,14 +54,38 @@
                         if (!_self) return;
                         
                         _self.navigationItem.title = [NSString stringWithFormat:@"%@(%d)", _self.categoryName, (int)_self.list.count];
-                        [_self.tableView reloadData];
+                        [_self _reloadTableViewWithSearchText:nil];
                 });
         });
+        
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.f, 0.f, self.view.frame.size.width, 0.f)];
+        self.searchBar.delegate = self;
+        [self.searchBar sizeToFit];
+        self.tableView.tableHeaderView = self.searchBar;
+}
+
+- (void)_reloadTableViewWithSearchText:(NSString *)searchText
+{
+        [self.searchFilteredList removeAllObjects];
+        if (self.searchBar.isFirstResponder && searchText.length) {
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", searchText];
+                [self.searchFilteredList addObjectsFromArray:[self.list filteredArrayUsingPredicate:predicate]];
+        } else {
+                [self.searchFilteredList addObjectsFromArray:self.list];
+        }
+        [self.tableView reloadData];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+        if (self.searchBar.isFirstResponder) {
+                [self.searchBar resignFirstResponder];
+        }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-        return self.list.count;
+        return self.searchFilteredList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,7 +96,7 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
         }
         
-        CIFilter *filter = self.list[indexPath.row];
+        CIFilter *filter = self.searchFilteredList[indexPath.row];
         if ([filter isKindOfClass:[CIFilter class]]) {
                 cell.textLabel.text = filter.name;
                 cell.detailTextLabel.text = filter.attributes[kCIAttributeFilterDisplayName];
@@ -83,12 +110,35 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        CIFilter *filter = self.list[indexPath.row];
+        CIFilter *filter = self.searchFilteredList[indexPath.row];
         FilterDetailViewController *detailController = [[FilterDetailViewController alloc] initWithFilter:filter];
         if (detailController) {
                 [self.navigationController pushViewController:detailController animated:YES];
         }
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - UISearchBarDelegate
+
+- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+        NSString *searchText = [self.searchBar.text stringByReplacingCharactersInRange:range withString:text];
+        searchText = [searchText stringByReplacingOccurrencesOfString:@"\\s" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, searchText.length)];
+        [self _reloadTableViewWithSearchText:searchText];
+        return YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+        [self _reloadTableViewWithSearchText:searchText];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+        [self _reloadTableViewWithSearchText:self.searchBar.text];
+        [searchBar resignFirstResponder];
+}
 
 @end
